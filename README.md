@@ -1,2 +1,2 @@
 # cli-template
-the temlate for the cli
+This is the templates for a cli
