@@ -8,12 +8,12 @@ import axios from "axios"
 import "./assets/styles/glob-css.scss"
 
 
-// Vue.config.productionTip = false;
+Vue.config.productionTip = false;
 Vue.use(ElementUI);
 
 Vue.prototype.$axios = axios;
 
-//对用户是否登录进行判断
+// 对用户是否登录进行判断
 // router.beforeEach((to, from, next) => {
 //     const role = sessionStorage.getItem("userName");
 //     if (!role && to.path !== "/login") {

@@ -12,21 +12,23 @@ module.exports = {
   transpileDependencies: ["resize-detector"],
   productionSourceMap: false,
   chainWebpack: config => {
-    if (process.env.NODE_ENV === "production") {
-      //打包文件分析
+    //打包文件分析
+    config.when(process.env.NODE_ENV === "production", config =>
       config
-        .plugin("webpack-bundle-analyzer")
-        .use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin);
-    }
+      .plugin("webpack-bundle-analyzer")
+      .use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin)
+    );
     //别名管理
     config.resolve.alias
       .set("@", path.resolve(__dirname, "./src/"))
       .set("@c", path.resolve(__dirname, "./src/components"))
-      .set("@p", path.resolve(__dirname, "./src/pages"));
+      .set("@p", path.resolve(__dirname, "./src/pages"))
+      .set("@u", path.resolve(__dirname, "./src/utils"));
   },
   configureWebpack: config => {
     if (process.env.NODE_ENV === "production") {
       config.mode = "production";
+      // process.env.VUE_APP_BASE_API = "/prod-api";
       let optimization = {
         runtimeChunk: "single",
         splitChunks: {
@@ -52,6 +54,7 @@ module.exports = {
         new CompressionPlugin({
           test: /\.js$|\.html$|.\css/, //匹配文件名
           threshold: 10240, //对超过10k的数据压缩
+          //正式时候为true删除
           deleteOriginalAssets: false, //删除源文件
           algorithm: "gzip"
         }),
@@ -80,6 +83,7 @@ module.exports = {
     } else {
       //dev环境设置
       config.mode = "development";
+      // process.env.VUE_APP_BASE_API = "/dev-api";
     }
     config.plugins = [...config.plugins, new HardSourceWebpackPlugin()];
   },
@@ -87,15 +91,20 @@ module.exports = {
   devServer: {
     port: 2333, // 端口
     https: false, // 启用https
+    open: true,
+    overlay: {
+      warnings: false,
+      errors: true
+    },
     proxy: {
-      "/api": {
-        target: "http://www.baidu.com/api",
-        changeOrigin: true, // 允许websockets跨域
-        // ws: true,
+      [process.env.VUE_APP_BASE_API]: {
+        target: `http://127.0.0.1:2333/mock`,
+        changeOrigin: true,
         pathRewrite: {
-          "^/api": ""
+          ["^" + process.env.VUE_APP_BASE_API]: ""
         }
       }
-    } // 代理转发配置，用于调试环境
+    },
+    after: require("./mock/mock_serve")
   }
 };
