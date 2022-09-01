@@ -1,0 +1,10 @@
+{{!-- ./templates/index.tsx.hbs --}}
+import React from 'react';
+import useController from './controller'
+import styles from './index.module.less'
+
+const {{ properCase name }} = () => {
+  const { state } = useController();
+  return <div className={styles.title}>{{ properCase name }} page; state--{ state }</div>
+}
+export default {{ properCase name }};

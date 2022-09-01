@@ -1,0 +1,120 @@
+{
+  "name": "my-app",
+  "version": "0.0.1",
+  "lodash": "^4.17.21",
+  "scripts": {
+    "dev": "vite --host",
+    "build:staging": "vite build --mode staging",
+    "build": "vite build",
+    "serve": "vite preview",
+    "eslint": "npx eslint . --ext .tsx,.jsx,.ts --fix src",
+    "prettier": "prettier --write '**/**.{js,jsx,tsx,ts}'",
+    "windicss": "npx windicss-analysis",
+    "new": "plop",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@ant-design/pro-layout": "^6.33.1",
+    "@reduxjs/toolkit": "^1.8.0",
+    "@sentry/browser": "^6.18.1",
+    "ahooks": "^3.1.13",
+    "antd": "^4.18.9",
+    "axios": "^0.26.0",
+    "dayjs": "^1.10.8",
+    "history": "^5.3.0",
+    "js-cookie": "^3.0.1",
+    "lodash-es": "^4.17.21",
+    "nprogress": "^0.2.0",
+    "query-string": "^7.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "react-router": "^6.2.2",
+    "react-router-dom": "^6.2.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@types/js-cookie": "^3.0.1",
+    "@types/lodash-es": "^4.17.6",
+    "@types/node": "^17.0.21",
+    "@types/nprogress": "^0.2.0",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.13",
+    "@types/react-router": "^5.1.18",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.13.0",
+    "@vitejs/plugin-legacy": "^1.7.1",
+    "@vitejs/plugin-react": "^1.2.0",
+    "antd-dayjs-vite-plugin": "^1.1.4",
+    "consola": "^2.15.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.10.0",
+    "eslint-config-alloy": "^4.5.1",
+    "eslint-plugin-react": "^7.29.3",
+    "husky": "^7.0.4",
+    "less": "^4.1.2",
+    "liftoff": "^4.0.0",
+    "lint-staged": "^12.3.4",
+    "plop": "^3.0.5",
+    "prettier": "^2.5.1",
+    "rollup": "^2.69.1",
+    "rollup-plugin-visualizer": "^5.6.0",
+    "typescript": "4.5.2",
+    "vite": "^2.8.6",
+    "vite-plugin-inspect": "^0.4.3",
+    "vite-plugin-optimize-persist": "^0.1.2",
+    "vite-plugin-package-config": "^0.1.1",
+    "vite-plugin-style-import": "^2.0.0",
+    "vite-plugin-svg-icons": "^2.0.1",
+    "vite-plugin-windicss": "^1.8.2",
+    "windicss": "^3.5.1"
+  },
+  "vite": {
+    "optimizeDeps": {
+      "include": [
+        "@ant-design/icons",
+        "@ant-design/pro-layout",
+        "@reduxjs/toolkit",
+        "ahooks",
+        "antd",
+        "antd-dayjs-vite-plugin/dist-src/antd-plugin",
+        "antd/lib/locale/zh_CN",
+        "axios",
+        "dayjs",
+        "dayjs/dayjs.min",
+        "dayjs/locale/zh-cn",
+        "dayjs/plugin/advancedFormat",
+        "dayjs/plugin/customParseFormat",
+        "dayjs/plugin/isMoment",
+        "dayjs/plugin/isSameOrAfter",
+        "dayjs/plugin/isSameOrBefore",
+        "dayjs/plugin/localeData",
+        "dayjs/plugin/localizedFormat",
+        "dayjs/plugin/weekOfYear",
+        "dayjs/plugin/weekYear",
+        "dayjs/plugin/weekday",
+        "js-cookie",
+        "lodash-es",
+        "query-string",
+        "react",
+        "react-dom",
+        "react-redux",
+        "react-router-dom"
+      ]
+    }
+  }
+}

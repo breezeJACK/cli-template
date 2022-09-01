@@ -1,0 +1,15 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.alwaysShowStatus": true, // 总是在 VSCode 显示 ESLint 的状态
+  "files.eol": "\n",
+  "editor.tabSize": 2,
+
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.validate": ["javascript", "javascriptreact", "vue", "typescript", "typescriptreact"],
+  "prettier.enable": true,
+  // 使用项目的 ts 版本
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

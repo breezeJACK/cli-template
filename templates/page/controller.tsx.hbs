@@ -1,0 +1,10 @@
+{{!-- ./templates/controller.tsx.hbs --}}
+import React, { useState } from 'react';
+
+function useController() {
+  const [state, setState] = useState('10');
+  return {
+    state
+  };
+}
+export default useController;
